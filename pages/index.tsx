@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { TotalGoalsBar } from "../components/Charts/TotalGoalsBar";
+import { WorldMapOverview } from "../components/Charts/WorldMapOverview";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const [totalGoalsData, setTotalGoalsData] = useState<any>([]);
+  const [worldMapOverviewData, setWorldMapOverviewData] = useState<any>([]);
 
   useEffect(() => {
     fetch("/api/standings", {
@@ -14,7 +14,7 @@ export default function Home() {
       },
     })
       .then((response) => response.json())
-      .then((json) => setTotalGoalsData(json));
+      .then((json) => setWorldMapOverviewData(json));
   }, []);
 
   return (
@@ -33,9 +33,10 @@ export default function Home() {
         <p className={styles.description}>Overview</p>
 
         <div className={styles.grid}>
+          <WorldMapOverview data={worldMapOverviewData} />
           <a className={styles.card}>
             <h2>Most Goals scored</h2>
-            <TotalGoalsBar data={totalGoalsData} />
+            {/* <TotalGoalsBar data={totalGoalsData} /> */}
           </a>
 
           <a className={styles.card}>

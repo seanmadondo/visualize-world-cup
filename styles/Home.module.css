@@ -71,7 +71,7 @@
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 80%;
+  width: 80%
 }
 
 .card {
